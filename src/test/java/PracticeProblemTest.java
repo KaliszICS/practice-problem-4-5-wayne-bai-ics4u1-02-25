@@ -1,5 +1,5 @@
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Method;
+import java.lang.reflect.*;
+import java.util.*;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.*;
 
@@ -127,7 +127,7 @@ public class PracticeProblemTest {
             assertFalse(result4, "equals() should return false when weights don't match");
             
             // Test equals with null and different class
-            boolean result5 = (boolean) equalsMethod.invoke(cow1, null);
+            boolean result5 = (boolean) equalsMethod.invoke(cow1, new Object[]{null});
             assertFalse(result5, "equals() should return false when comparing with null");
             
             boolean result6 = (boolean) equalsMethod.invoke(cow1, "Not a cow");
@@ -186,7 +186,7 @@ public class PracticeProblemTest {
     }
     
     @Test
-    public void testGetNameMethod() {
+    public void testGetNameMethod2() {
         try {
             Class<?> studentClass = Class.forName("Student");
             Method getNameMethod = studentClass.getMethod("getName");
@@ -200,7 +200,7 @@ public class PracticeProblemTest {
     }
     
     @Test
-    public void testGetAgeMethod() {
+    public void testGetAgeMethod2() {
         try {
             Class<?> studentClass = Class.forName("Student");
             Method getAgeMethod = studentClass.getMethod("getAge");
@@ -228,7 +228,7 @@ public class PracticeProblemTest {
     }
     
     @Test
-    public void testToStringMethod() {
+    public void testToStringMethod2() {
         try {
             Class<?> studentClass = Class.forName("Student");
             Method toStringMethod = studentClass.getMethod("toString");
@@ -252,7 +252,7 @@ public class PracticeProblemTest {
     }
     
     @Test
-    public void testEqualsMethod() {
+    public void testEqualsMethod2() {
         try {
             Class<?> studentClass = Class.forName("Student");
             Method equalsMethod = studentClass.getMethod("equals", Object.class);
@@ -274,7 +274,7 @@ public class PracticeProblemTest {
             assertFalse(result2, "equals() should return false when student numbers don't match");
             
             // Test equals with null and different class
-            boolean result3 = (boolean) equalsMethod.invoke(student1, null);
+            boolean result3 = (boolean) equalsMethod.invoke(student1, new Object[]{null});
             assertFalse(result3, "equals() should return false when comparing with null");
             
             boolean result4 = (boolean) equalsMethod.invoke(student1, "Not a student");
